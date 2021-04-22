@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:text_now/pages/ConversationPageList.dart';
+import 'config/Palette.dart';
+import 'pages/ConversationPageSlide.dart';
 
 void main() {
   runApp(TextNow());
@@ -12,9 +13,9 @@ class TextNow extends StatelessWidget {
     return MaterialApp(
       title: 'Text Now',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Palette.primaryColor,
       ),
-      home: ConversationPageList(),
+      home: ConversationPageSlide(),
     );
   }
 }
