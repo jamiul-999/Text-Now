@@ -12,7 +12,7 @@ import 'package:text_now/main.dart';
 void main() {
   testWidgets('Checking if hello world shows up', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(TextNow());
     expect(find.text('Hello World!'), findsOneWidget);
   });
 }
