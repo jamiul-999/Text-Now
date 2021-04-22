@@ -8,11 +8,12 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:text_now/main.dart';
+import 'package:text_now/pages/ConversationPageList.dart';
 
 void main() {
-  testWidgets('Checking if hello world shows up', (WidgetTester tester) async {
+  testWidgets('Main UI Test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(TextNow());
-    expect(find.text('Hello World!'), findsOneWidget);
+    expect(find.byType(ConversationPageList), findsOneWidget);
   });
 }

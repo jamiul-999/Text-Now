@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:text_now/config/Palette.dart';
 
 class InputWidget extends StatelessWidget {
-  final TextEditingController textEditingController =
-      new TextEditingController();
+  final TextEditingController textEditingController = TextEditingController();
+
+  InputWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class InputWidget extends StatelessWidget {
               margin: new EdgeInsets.symmetric(horizontal: 1.0),
               child: new IconButton(
                 icon: new Icon(Icons.face),
-                //onPressed: () => {},
+                onPressed: () => {},
                 color: Palette.primaryColor,
               ),
             ),
