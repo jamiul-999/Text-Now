@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'config/Palette.dart';
-import 'pages/ConversationPageSlide.dart';
-import 'pages/ConversationPage.dart';
+import 'pages/RegisterPage.dart';
 
 void main() {
   runApp(TextNow());
@@ -13,10 +12,11 @@ class TextNow extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Text Now',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Palette.primaryColor,
       ),
-      home: ConversationPageSlide(),
+      home: RegisterPage(),
     );
   }
 }

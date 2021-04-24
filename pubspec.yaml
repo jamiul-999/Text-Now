@@ -35,6 +35,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.9.0
+  infinite_listview: ^1.1.0
 flutter_icons:
   ios: true
   android: true
@@ -51,6 +52,9 @@ flutter_icons:
 flutter:
   assets:
     - assets/
+    - "assets/launcher/ic_background.png"
+    - "assets/launcher/ic_foreground.png"
+    - "assets/launcher/ic_launcher.png"
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
