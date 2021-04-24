@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // Color palette for the unthemed pages
 class Palette {
-  static Color primaryColor = Colors.white;
+  static Color primaryColor = Colors.blue;
   static Color accentColor = Color(0xff4fc3f7);
   static Color secondaryColor = Colors.black;
   static Color primaryTextColor = Colors.black;

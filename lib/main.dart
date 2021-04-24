@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'config/Palette.dart';
 import 'pages/ConversationPageSlide.dart';
+import 'pages/ConversationPage.dart';
 
 void main() {
   runApp(TextNow());

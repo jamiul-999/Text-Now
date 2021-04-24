@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rubber/rubber.dart';
 import 'ConversationPage.dart';
+import 'package:text_now/widgets/InputWidget.dart';
+import 'ConversationBottomSheet.dart';
 
 class ConversationPageSlide extends StatefulWidget {
   @override
@@ -13,6 +15,8 @@ class _ConversationPageSlideState extends State<ConversationPageSlide>
     with SingleTickerProviderStateMixin {
   var controller;
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     controller = RubberAnimationController(
@@ -23,12 +27,31 @@ class _ConversationPageSlideState extends State<ConversationPageSlide>
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      children: <Widget>[
-        ConversationPage(),
-        ConversationPage(),
-        ConversationPage()
-      ],
-    );
+    return SafeArea(
+        child: Scaffold(
+            key: _scaffoldKey,
+            body: Column(
+              children: <Widget>[
+                Expanded(
+                    child: PageView(
+                  children: <Widget>[
+                    ConversationPage(),
+                    ConversationPage(),
+                    ConversationPage()
+                  ],
+                )),
+                Container(
+                    child: GestureDetector(
+                        child: InputWidget(),
+                        onPanUpdate: (details) {
+                          if (details.delta.dy < 0) {
+                            _scaffoldKey.currentState
+                                .showBottomSheet<Null>((BuildContext context) {
+                              return ConversationBottomSheet();
+                            });
+                          }
+                        }))
+              ],
+            )));
   }
 }
