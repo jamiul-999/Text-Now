@@ -145,7 +145,7 @@ class _RegisterPageState extends State<RegisterPage>
               child: Image.asset(Assets.app_icon_fg, height: 100)),
           Container(
               margin: EdgeInsets.only(top: 30),
-              child: Text('Messio Messenger',
+              child: Text('Text Now',
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
