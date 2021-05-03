@@ -15,7 +15,7 @@ class _ConversationPageSlideState extends State<ConversationPageSlide>
     with SingleTickerProviderStateMixin {
   var controller;
 
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {

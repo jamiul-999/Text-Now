@@ -37,6 +37,11 @@ class _RegisterPageState extends State<RegisterPage>
 
   @override
   void initState() {
+    initApp();
+    super.initState();
+  }
+
+  void initApp() async {
     WidgetsBinding.instance.addObserver(this);
     usernameFieldAnimationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
@@ -68,7 +73,6 @@ class _RegisterPageState extends State<RegisterPage>
         end = Alignment(1 - pageController.page, 1 - pageController.page);
       });
     });
-    super.initState();
   }
 
   @override
@@ -88,17 +92,11 @@ class _RegisterPageState extends State<RegisterPage>
                   child: Stack(
                       alignment: AlignmentDirectional.bottomCenter,
                       children: <Widget>[
-                        AnimatedContainer(
-                            duration: Duration(milliseconds: 1500),
-                            child: PageView(
-                                controller: pageController,
-                                physics: NeverScrollableScrollPhysics(),
-                                onPageChanged: (int page) =>
-                                    updatePageState(page),
-                                children: <Widget>[
-                                  buildPageOne(),
-                                  buildPageTwo()
-                                ])),
+                        PageView(
+                            controller: pageController,
+                            physics: NeverScrollableScrollPhysics(),
+                            onPageChanged: (int page) => updatePageState(page),
+                            children: <Widget>[buildPageOne(), buildPageTwo()]),
                         Container(
                           margin: EdgeInsets.only(bottom: 30),
                           child: Row(
@@ -137,39 +135,35 @@ class _RegisterPageState extends State<RegisterPage>
   }
 
   buildPageOne() {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Container(
-              margin: EdgeInsets.only(top: 250),
-              child: Image.asset(Assets.app_icon_fg, height: 100)),
-          Container(
-              margin: EdgeInsets.only(top: 30),
-              child: Text('Text Now',
+    return Column(
+      children: <Widget>[
+        Container(
+            margin: EdgeInsets.only(top: 250),
+            child: Image.asset(Assets.app_icon_fg, height: 100)),
+        Container(
+            margin: EdgeInsets.only(top: 30),
+            child: Text('Text Now',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22))),
+        Container(
+            margin: EdgeInsets.only(top: 100),
+            child: ElevatedButton.icon(
+                onPressed: () => updatePageState(1),
+                // elevation: 0,
+                //color: Colors.transparent,
+                icon: Image.asset(
+                  Assets.google_button,
+                  height: 25,
+                ),
+                label: Text(
+                  'Sign In with Google',
                   style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22))),
-          Container(
-              margin: EdgeInsets.only(top: 100),
-              child: ButtonTheme(
-                  height: 40,
-                  child: ElevatedButton.icon(
-                      onPressed: () => updatePageState(1),
-                      // elevation: 0,
-                      //color: Colors.transparent,
-                      icon: Image.asset(
-                        Assets.google_button,
-                        height: 25,
-                      ),
-                      label: Text(
-                        'Sign In with Google',
-                        style: TextStyle(
-                            color: Palette.primaryTextColorLight,
-                            fontWeight: FontWeight.w800),
-                      ))))
-        ],
-      ),
+                      color: Palette.primaryTextColorLight,
+                      fontWeight: FontWeight.w800),
+                )))
+      ],
     );
   }
 
@@ -184,8 +178,7 @@ class _RegisterPageState extends State<RegisterPage>
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               SizedBox(height: profilePicHeightAnimation.value),
-              Container(
-                  child: CircleAvatar(
+              CircleAvatar(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -206,7 +199,7 @@ class _RegisterPageState extends State<RegisterPage>
                 ),
                 backgroundImage: Image.asset(Assets.user).image,
                 radius: 60,
-              )),
+              ),
               SizedBox(
                 height: ageAnimation.value,
               ),
@@ -234,11 +227,9 @@ class _RegisterPageState extends State<RegisterPage>
               SizedBox(
                 height: usernameAnimation.value,
               ),
-              Container(
-                child: Text(
-                  'Choose a username',
-                  style: Styles.questionLight,
-                ),
+              Text(
+                'Choose a username',
+                style: Styles.questionLight,
               ),
               Container(
                   margin: EdgeInsets.only(top: 20),
@@ -276,16 +267,16 @@ class _RegisterPageState extends State<RegisterPage>
     });
   }
 
-  Future<bool> onWillPop() {
+  Future<bool> onWillPop() async {
     if (currentPage == 1) {
       //go to first page if currently on second page
       pageController.previousPage(
         duration: Duration(milliseconds: 300),
         curve: Curves.linear,
       );
-      return Future.value(false);
+      return false;
     }
-    return Future.value(true);
+    return true;
   }
 
   @override

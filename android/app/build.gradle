@@ -22,10 +22,28 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+dependencies {
+  // Import the Firebase BoM
+  implementation platform('com.google.firebase:firebase-bom:27.1.0')
+
+  testImplementation 'junit:junit:4.12'
+androidTestImplementation 'androidx.test:runner:1.2.0'
+androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+implementation 'androidx.multidex:multidex:2.0.1'
+
+  // Add the dependencies for the desired Firebase products
+  // https://firebase.google.com/docs/android/setup#available-libraries
+}
 
 android {
     compileSdkVersion 30
+
+     lintOptions {
+        disable 'InvalidPackage'
+    }
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
@@ -34,6 +52,8 @@ android {
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
