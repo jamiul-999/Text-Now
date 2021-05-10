@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:text_now/models/user_.dart';
+import 'package:text_now/models/Utilizer.dart';
 
 abstract class BaseAuthenticationProvider {
   Future<User> signInWithGoogle();
@@ -10,8 +10,8 @@ abstract class BaseAuthenticationProvider {
 }
 
 abstract class BaseUserDataProvider {
-  Future<User> saveDetailsFromGoogleAuth(User user);
-  Future<User> saveProfileDetails(
+  Future<Utilizer> saveDetailsFromGoogleAuth(User user);
+  Future<Utilizer> saveProfileDetails(
       String uid, String profileImageUrl, int age, String username);
   Future<bool> isProfileComplete(String uid);
 }

@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 import 'dart:io';
 
+import 'package:text_now/models/Utilizer.dart';
+
 @immutable
 abstract class AuthenticationEvent extends Equatable {
   AuthenticationEvent([List props = const <dynamic>[]]); // : super(props);
@@ -13,8 +15,6 @@ class AppLaunched extends AuthenticationEvent {
   @override
   String toString() => 'AppLaunched';
 
-  @override
-  // TODO: implement props
   List<Object> get props => [AppLaunched];
 }
 
@@ -22,8 +22,6 @@ class ClickedGoogleLogin extends AuthenticationEvent {
   @override
   String toString() => 'ClickedGoogleLogin';
 
-  @override
-  // TODO: implement props
   List<Object> get props => [ClickedGoogleLogin];
 }
 
@@ -33,8 +31,6 @@ class LoggedIn extends AuthenticationEvent {
   @override
   String toString() => 'LoggedIn';
 
-  @override
-  // TODO: implement props
   List<Object> get props => [LoggedIn];
 }
 
@@ -44,8 +40,6 @@ class PickedProfilePicture extends AuthenticationEvent {
   @override
   String toString() => 'PickedProfilePicture';
 
-  @override
-  // TODO: implement props
   List<Object> get props => [PickedProfilePicture];
 }
 
@@ -57,8 +51,6 @@ class SaveProfile extends AuthenticationEvent {
   @override
   String toString() => 'SaveProfile';
 
-  @override
-  // TODO: implement props
   List<Object> get props => [SaveProfile];
 }
 
@@ -66,7 +58,5 @@ class ClickedLogout extends AuthenticationEvent {
   @override
   String toString() => 'ClickedLogout';
 
-  @override
-  // TODO: implement props
   List<Object> get props => [ClickedLogout];
 }

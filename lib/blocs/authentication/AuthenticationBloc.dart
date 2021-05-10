@@ -4,7 +4,7 @@ import './Bloc.dart';
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:text_now/config/Paths.dart';
-import 'package:text_now/models/user_.dart';
+import 'package:text_now/models/Utilizer.dart';
 import 'package:text_now/repositories/AuthenticationRepository.dart';
 import 'package:text_now/repositories/StorageRepository.dart';
 import 'package:text_now/repositories/UserDataRepository.dart';
@@ -95,7 +95,7 @@ class AuthenticationBloc
 
   Stream<AuthenticationState> mapLoggedInToState(User firebaseUser) async* {
     yield ProfileUpdateInProgress();
-    User user =
+    Utilizer user =
         await userDataRepository.saveDetailsFromGoogleAuth(firebaseUser);
     yield PreFillData(user);
   }

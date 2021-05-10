@@ -1,4 +1,4 @@
-package com.example.text_now;
+package com.jhdipto.textnow;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

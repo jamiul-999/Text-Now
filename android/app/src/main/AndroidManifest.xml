@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.text_now">
+    package="com.jhdipto.textnow">
    <application
         android:label="text_now"
         android:icon="@mipmap/ic_launcher">
